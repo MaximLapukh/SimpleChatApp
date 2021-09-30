@@ -16,7 +16,7 @@ namespace chatService
         [OperationContract]
         void Disconnection(int id);
         [OperationContract(IsOneWay = true)]
-        void SandMsg(int id,string msg);
+        void SendMsg(int id,string msg);
     }
     public interface IServiceChatCallback
     {

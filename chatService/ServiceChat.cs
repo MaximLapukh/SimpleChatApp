@@ -36,7 +36,7 @@ namespace chatService
 
         }
 
-        public void SandMsg(int id, string msg)
+        public void SendMsg(int id, string msg)
         {
             var answer = DateTime.Now.ToShortTimeString() + " ";
             var user = clients.FirstOrDefault(u => u.id == id);

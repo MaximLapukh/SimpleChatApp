@@ -29,20 +29,20 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Connect"/>
-                <TextBlock Style="{StaticResource UserName}">UserName</TextBlock>
+                <Button x:Name="BConnect" Content="Connect" Click="Button_Connect"/>
+                <TextBlock x:Name="Username" Style="{StaticResource UserName}"></TextBlock>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <ListBox></ListBox>
+            <ListBox x:Name="Messages"></ListBox>
         </Grid>
         <Grid Grid.Row="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-                <TextBox Grid.Column="0" ></TextBox>
-            <Button Grid.Column="1" Content="Send"/>
+                <TextBox x:Name="BoxMessage" Grid.Column="0" ></TextBox>
+            <Button x:Name="BSend" Grid.Column="1" Content="Send" Click="Button_Send"/>
         </Grid>
     </Grid>
 </Window>

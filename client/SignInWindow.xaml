@@ -43,14 +43,14 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Button Content="Register"/>
+            <Button Content="Register" Click="Button_Register"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Cancel"/>
-                <Button Grid.Column="1"  Content="Sign in"/>
+                <Button Content="Cancel" Click="Button_Cancel"/>
+                <Button Grid.Column="1"  Content="Sign in" Click="Button_SignIn"/>
             </Grid>
         </Grid>
     </Grid>
