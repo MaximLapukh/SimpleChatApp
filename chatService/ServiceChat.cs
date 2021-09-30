@@ -11,36 +11,34 @@ namespace chatService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ServiceChat : IServiceChat
     {
-        private List<User> clients = new List<User>();
+        private List<Client> clients = new List<Client>();
         private List<string> messagesHistory = new List<string>();
         private int next_id = 1;
         public (int,List<string>) Connection(string name)
         {
-            var user = new User()
+            var curClient = new Client()
             {
                 id = next_id,
                 name = name,
                 operationContext = OperationContext.Current
             };
             next_id++;
-            clients.Add(user);
-            return (user.id,messagesHistory);
+            clients.Add(curClient);
+            return (curClient.id,messagesHistory);
         }
 
         public void Disconnection(int id)
         {
-            var user = clients.FirstOrDefault(u => u.id == id);
-            if (user != null)                        
-                clients.Remove(user);
-            
-
+            var curClient = clients.FirstOrDefault(u => u.id == id);
+            if (curClient != null)                        
+                clients.Remove(curClient);            
         }
 
         public void SendMsg(int id, string msg)
         {
             var answer = DateTime.Now.ToShortTimeString() + " ";
-            var user = clients.FirstOrDefault(u => u.id == id);
-            if (user != null) answer += user.name;
+            var curClient = clients.FirstOrDefault(u => u.id == id);
+            if (curClient != null) answer += curClient.name;
             answer += ": " + msg;
 
             messagesHistory.Add(answer);
@@ -49,7 +47,6 @@ namespace chatService
                 {
                     client.operationContext.GetCallbackChannel<IServiceChatCallback>().CallbackMsg(answer);
                 }
-
         }
     }
 }

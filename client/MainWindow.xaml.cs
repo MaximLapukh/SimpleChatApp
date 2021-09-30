@@ -1,23 +1,8 @@
 ﻿using client.Models;
 using client.ServiceChat;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace client
 {
@@ -29,7 +14,7 @@ namespace client
         private ServiceChatClient client;
         private int id;
 
-        private bool connection { get; set; } = false;
+        private bool connection = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -48,7 +33,7 @@ namespace client
                         if (string.IsNullOrWhiteSpace(signInWinodw.name.Text) ||
                             string.IsNullOrWhiteSpace(signInWinodw.password.Text))
                         {
-                            ErrorMessage("uncorrect name or password");
+                            ShowErrorMessage("uncorrect name or password");
                             return;
                         }
 
@@ -69,10 +54,9 @@ namespace client
         {
             if (!string.IsNullOrWhiteSpace(BoxMessage.Text))
             {
-                client.SandMsg(id, BoxMessage.Text);
+                client.SendMsg(id, BoxMessage.Text);
                 BoxMessage.Text = string.Empty;
-            }
-          
+            }          
         }
 
         private void Disconnect()
@@ -93,7 +77,7 @@ namespace client
                 var user = db.Users.FirstOrDefault(u => u.name == username);
                 if(user != null)
                 {
-                    ErrorMessage("this name is occupied"); 
+                    ShowErrorMessage("this name is occupied"); 
                     return;
                 }
                 var newuser = new User() { name = username, password = userpassword };
@@ -130,19 +114,19 @@ namespace client
                     }
                     else
                     {
-                        ErrorMessage("uncorrect name or password");
+                        ShowErrorMessage("uncorrect name or password");
                         return;
                     }
                 }
                 else
                 {
-                    ErrorMessage("uncorrect name or password");
+                    ShowErrorMessage("uncorrect name or password");
                     return;
                 }
             }
         }
  
-        private void ErrorMessage(string msg)
+        private void ShowErrorMessage(string msg)
         {
             MessageBox.Show(msg, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace chatService
 {
-    class User
+    class Client
     {
         public int id { get; set; }
         public string name { get; set; }

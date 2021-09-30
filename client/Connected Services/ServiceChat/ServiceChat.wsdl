@@ -49,8 +49,8 @@
   <wsdl:message name="IServiceChat_Disconnection_OutputMessage">
     <wsdl:part name="parameters" element="tns:DisconnectionResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceChat_SandMsg_InputMessage">
-    <wsdl:part name="parameters" element="tns:SandMsg" />
+  <wsdl:message name="IServiceChat_SendMsg_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMsg" />
   </wsdl:message>
   <wsdl:message name="IServiceChat_CallbackMsg_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:CallbackMsg" />
@@ -64,8 +64,8 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/Disconnection" message="tns:IServiceChat_Disconnection_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/DisconnectionResponse" message="tns:IServiceChat_Disconnection_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SandMsg">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/SandMsg" message="tns:IServiceChat_SandMsg_InputMessage" />
+    <wsdl:operation name="SendMsg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/SendMsg" message="tns:IServiceChat_SendMsg_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CallbackMsg">
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/CallbackMsg" message="tns:IServiceChat_CallbackMsg_OutputCallbackMessage" />
@@ -92,8 +92,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SandMsg">
-      <soap12:operation soapAction="http://tempuri.org/IServiceChat/SandMsg" style="document" />
+    <wsdl:operation name="SendMsg">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/SendMsg" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

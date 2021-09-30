@@ -27,11 +27,11 @@ namespace client.ServiceChat {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/Disconnection", ReplyAction="http://tempuri.org/IServiceChat/DisconnectionResponse")]
         System.Threading.Tasks.Task DisconnectionAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SandMsg")]
-        void SandMsg(int id, string msg);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SendMsg")]
+        void SendMsg(int id, string msg);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SandMsg")]
-        System.Threading.Tasks.Task SandMsgAsync(int id, string msg);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SendMsg")]
+        System.Threading.Tasks.Task SendMsgAsync(int id, string msg);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -85,12 +85,12 @@ namespace client.ServiceChat {
             return base.Channel.DisconnectionAsync(id);
         }
         
-        public void SandMsg(int id, string msg) {
-            base.Channel.SandMsg(id, msg);
+        public void SendMsg(int id, string msg) {
+            base.Channel.SendMsg(id, msg);
         }
         
-        public System.Threading.Tasks.Task SandMsgAsync(int id, string msg) {
-            return base.Channel.SandMsgAsync(id, msg);
+        public System.Threading.Tasks.Task SendMsgAsync(int id, string msg) {
+            return base.Channel.SendMsgAsync(id, msg);
         }
     }
 }
